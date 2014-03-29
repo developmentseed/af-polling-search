@@ -21,38 +21,96 @@ App = {
 			// display map
 			var baseMap = 'mayakreidieh.hk09m36l';
 			this.map = L.mapbox.map('map', baseMap).setView([34.361370, 66.363099], 6);
+			this.layers = [];
+			this.view = 'home';
+
+			function home() {
+				console.log(that.map);
+				$('#control').fadeIn(100);
+				$('#title').fadeIn(100);
+				$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
+				$('#narrative').html('');
+				$('.select-style').fadeOut(100);
+				$('#back-button').fadeOut(100);
+				clear();
+				that.view = 'home';
+
+			}
+			function clear() {
+
+				that.map.off('moveend');
+				that.map.off('dragend');
+				that.layers.forEach(function (layer) {
+					that.map.removeLayer(layer);
+				});
+				if (that.homeMarker !== undefined) {
+					var temp = that.homeMarker;
+					that.map.removeLayer(temp);
+					that.homeMarker = null;
+				}
+				if (that.distanceMarker !== undefined){
+					var temp = that.distanceMarker;
+					that.map.removeLayer(temp);
+					that.distanceMarker = null;
+				}
+			}
 
 			// listen to control input
-			$('#manual-map').on('click', function(){
+			function manualMap() {
+			// $('#manual-map').on('click', function(){
 				$('#title').html('');
 				that.initUserLocationEntry();
-
 				$('#control').fadeOut(100);
 				$('#title').fadeOut(100);
 				$('.select-style').fadeIn(100);
+				$('#back-button').fadeIn(100);
 				that._addDrag();
-			});
-			$('#auto-map').on('click', function(){
-				$('#title').html('');
+				that.view = 'manual';
+			};
 
+			function autoMap() {
+			// $('#auto-map').on('click', function(){
+				$('#title').html('');
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
 				$('#control').fadeOut(100);
+				$('#back-button').fadeIn(100);
 				that._addDrag();
-
-			});
-			$('#view-map').on('click', function(){
+				that.view = 'auto';
+			};
+			function viewMap() {
+			// $('#view-map').on('click', function(){
 				$('#title').html('');
 
 				$('#title').fadeOut(100);
 				$('#control').fadeOut(100);
-				var locations = omnivore.geojson('data/locations.geojson')
-				.on('ready', function(layer) {
-					this.eachLayer(function(marker) {
-						marker.setIcon(L.divIcon({className: 'div-icon'}));
-					});
-				}).addTo(that.map);
-			});
+				// var locations = omnivore.geojson('data/locations.geojson')
+				// .on('ready', function(layer) {
+				// 	this.eachLayer(function(marker) {
+				// 		marker.setIcon(L.divIcon({className: 'div-icon'}));
+				// 	});
+				// }).addTo(that.map);
+				var locations = L.mapbox.tileLayer('kamicut.af-pc').addTo(that.map);
+				var gridLayer = L.mapbox.gridLayer('kamicut.af-pc').addTo(that.map);
+				var myGridControl = L.mapbox.gridControl(gridLayer).addTo(that.map);
+				console.log(gridLayer);
+				that.layers.push(locations);
+				that.layers.push(gridLayer);
+				//that.layers.push(myGridControl);
+
+				$('#back-button').fadeIn(100);
+				that.view = 'all';
+			};
+
+			var routes = {
+				'/': home,
+				'/manual-map': manualMap,
+				'/auto-map': autoMap,
+				'view-map': viewMap
+			};
+
+			var router = Router(routes);
+			router.init();
 		},
 
 		addHome: function(point){
@@ -61,6 +119,9 @@ App = {
 
 		_addDrag: function () {
 			var that = this;
+			this.map.on('dragstart', function(e) {
+				that.view = 'manual';
+			})
 			this.map.on('dragend', function(e) {
 				App.home = {
 					lat: that.map.getCenter().lat,
@@ -118,11 +179,9 @@ App = {
 				var dist = (distance(App.home.lat, App.home.lon, point.lat, point.lon, 'K')).toFixed(2);
 
 				$('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location + 
-					'You are: '+dist + ' km away.' );
+					'. You are: '+dist + ' km away.' );
 
-			// var group = new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
-			// this.map.fitBounds(group.getBounds());
-
+			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
 		},
 
@@ -225,7 +284,12 @@ App = {
 		var nearestPC = {'lon':App.pollingStations[minIndex][12], 'lat':App.pollingStations[minIndex][13]};
 		console.log('NEAREST PC');
 		console.log(nearestPC);
-		this._renderDestination(nearestPC, {'name' : App.pollingStations[minIndex][6] , 'location' : App.pollingStations[minIndex][5] });
+		var group = this._renderDestination(nearestPC, {
+			'name' : App.pollingStations[minIndex][6] , 'location' : App.pollingStations[minIndex][5] 
+		});
+		if (this.view == 'auto') {
+			this.map.fitBounds(group.getBounds());
+		}
 		return minIndex;
 	},
 
@@ -249,7 +313,7 @@ App = {
 			distOptions.change(function() {
 				var district = $('select option:selected').val();
 				that.map.fitBounds(distNames[district]);
-				that.map.on('zoomend', function() {
+				that.map.on('moveend', function() {
 					console.log('zoomed in')
 					App.home = {
 						lat: that.map.getCenter().lat,
@@ -261,7 +325,7 @@ App = {
 
 			});
 		}).addTo(that.map);
-
+		this.layers.push(districts);
 	},
 };
 
