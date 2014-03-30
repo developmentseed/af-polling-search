@@ -16,11 +16,13 @@ App = {
 	App.Map = {
 
 		init: function(){
-			
+
 			var that = this;
 			// display map
-			var baseMap = 'mayakreidieh.hk09m36l';
-			this.map = L.mapbox.map('map', baseMap).setView([34.361370, 66.363099], 6);
+			var baseMap = 'afghan-open.map-hjp22ek6,nate.gf6o5hfr';
+			this.map = L.mapbox.map('map', baseMap,{
+    				tileLayer: {format: 'jpg80'}
+				}).setView([34.361370, 66.363099], 6);
 			this.layers = [];
 			this.view = 'home';
 
@@ -28,10 +30,11 @@ App = {
 				console.log(that.map);
 				$('#control').fadeIn(100);
 				$('#title').fadeIn(100);
-				$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
+				//$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
 				$('#narrative').html('');
 				$('.select-style').fadeOut(100);
 				$('#back-button').fadeOut(100);
+				$('#cross-hair').addClass('hide');
 				clear();
 				that.view = 'home';
 
@@ -64,6 +67,7 @@ App = {
 				$('#title').fadeOut(100);
 				$('.select-style').fadeIn(100);
 				$('#back-button').fadeIn(100);
+				$('#cross-hair').removeClass('hide');
 				that._addDrag();
 				that.view = 'manual';
 			};
@@ -75,6 +79,7 @@ App = {
 				$('#title').fadeOut(100);
 				$('#control').fadeOut(100);
 				$('#back-button').fadeIn(100);
+				$('#cross-hair').removeClass('hide');
 				that._addDrag();
 				that.view = 'auto';
 			};
@@ -90,12 +95,12 @@ App = {
 				// 		marker.setIcon(L.divIcon({className: 'div-icon'}));
 				// 	});
 				// }).addTo(that.map);
-				var locations = L.mapbox.tileLayer('kamicut.af-pc').addTo(that.map);
-				var gridLayer = L.mapbox.gridLayer('kamicut.af-pc').addTo(that.map);
-				var myGridControl = L.mapbox.gridControl(gridLayer).addTo(that.map);
-				console.log(gridLayer);
+				var locations = L.mapbox.tileLayer('nate.x3ymbo6r').addTo(that.map);
+				// var gridLayer = L.mapbox.gridLayer('nate.x3ymbo6r').addTo(that.map);
+				// var myGridControl = L.mapbox.gridControl(gridLayer).addTo(that.map);
+				// console.log(gridLayer);
 				that.layers.push(locations);
-				that.layers.push(gridLayer);
+				// that.layers.push(gridLayer);
 				//that.layers.push(myGridControl);
 
 				$('#back-button').fadeIn(100);
@@ -139,7 +144,7 @@ App = {
 		addPath:function(point1, point2){
 			var polyline = L.polyline( [[point1.lat,point1.lon],[point2.lat,point2.lon]], {color: 'red'}).addTo(this.map);
 			this.map.fitBounds(polyline.getBounds());
-		}, 
+		},
 
 		_renderHome : function(point){
 			if (!this.homeMarker) {
@@ -178,7 +183,7 @@ App = {
 
 				var dist = (distance(App.home.lat, App.home.lon, point.lat, point.lon, 'K')).toFixed(2);
 
-				$('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location + 
+				$('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
 					'. You are: '+dist + ' km away.' );
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
@@ -285,7 +290,7 @@ App = {
 		console.log('NEAREST PC');
 		console.log(nearestPC);
 		var group = this._renderDestination(nearestPC, {
-			'name' : App.pollingStations[minIndex][6] , 'location' : App.pollingStations[minIndex][5] 
+			'name' : App.pollingStations[minIndex][6] , 'location' : App.pollingStations[minIndex][5]
 		});
 		if (this.view == 'auto') {
 			this.map.fitBounds(group.getBounds());
@@ -297,7 +302,7 @@ App = {
 
 		var that = this;
 		var distNames = {};
-		var districts = omnivore.topojson('data/districts.json')
+		var districts = omnivore.topojson('data/districts-en.json')
 		.on('ready', function() {
 
 			for (var key in districts._layers) {
@@ -333,6 +338,3 @@ App.Map.init();
 
 
 }());
-
-
-
