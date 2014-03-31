@@ -154,7 +154,7 @@ App = {
                         iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
                         className: "current-location"   
                 });
-				this.homeMarker = L.rotatedMarker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
+		this.homeMarker = L.rotatedMarker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
                 this.homeMarker.options.angle = App.home.heading;
 			} else {
 				this.homeMarker.setLatLng([point.lat, point.lon]).update();
@@ -212,7 +212,7 @@ App = {
 					App.home = {
 						lat : position.coords.latitude,
 						lon :  position.coords.longitude,
-                        heading : position.coords.heading
+                                                heading : position.coords.heading
 					};
 					console.log('getting getClosesPollingStation');
 					that._renderHome(App.home);
