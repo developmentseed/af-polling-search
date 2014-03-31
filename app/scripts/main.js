@@ -148,11 +148,10 @@ App = {
 
 		_renderHome : function(point){
 			if (!this.homeMarker) {
-                var locationIcon = L.icon({
-                        iconUrl: 'images/locationIcon.png',
-                        iconSize:     [32, 32], // size of the icon
-                        iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-                        className: "current-location"   
+                var locationIcon = L.divIcon({
+                        className: "current-location",
+						iconSize: [20, 20],
+						iconAnchor: [8,12]
                 });
 		this.homeMarker = L.rotatedMarker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
                 this.homeMarker.options.angle = App.home.heading;
@@ -164,13 +163,13 @@ App = {
 
 		_renderDestination: function(point, address){
 			if (!this.distanceMarker) {
-                /*var targetIcon = L.icon({
-                        iconUrl: 'images/Location-Marker.png',
-                        iconSize:     [32, 32], 
-                        iconAnchor:   [15, 15] 
+                var targetIcon = L.divIcon({
+						className: "dest-location",
+						iconSize: [20, 20],
+						iconAnchor: [8,12]
                     });
-				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);*/
-                this.distanceMarker = L.marker([point.lat, point.lon]).addTo(this.map);
+				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);
+                //this.distanceMarker = L.marker([point.lat, point.lon]).addTo(this.map);
 			} else {
 				console.log(this.distanceMarker);
 				this.distanceMarker.setLatLng([point.lat, point.lon]).update();
@@ -347,22 +346,22 @@ App = {
 		this.layers.push(districts);
 	},
     trackLocation : function (active,sec){
-        var self = this; 
+        var self = this;
         if(active && self.view == 'auto') {
             console.log(self.view);
            window.setInterval(function() {
             self.getUserGeoLocation();
             }, sec*1000);
-            return true;   
+            return true;
         }
         return false;
-    },    
+    },
 };
 
 App.Map.init();
-//if we want to track the user movements 
+//if we want to track the user movements
 // @active :enabled  set to false to disable it
-//@sec  refresh time in seconds      
+//@sec  refresh time in seconds
 App.Map.trackLocation(true,5);
 // MIT-licensed code by Benjamin Becquet
 // https://github.com/bbecquet/Leaflet.PolylineDecorator
