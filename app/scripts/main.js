@@ -348,7 +348,8 @@ App = {
 	},
     trackLocation : function (active,sec){
         var self = this; 
-        if(active) {
+        if(active && self.view == 'auto') {
+            console.log(self.view);
            window.setInterval(function() {
             self.getUserGeoLocation();
             }, sec*1000);
