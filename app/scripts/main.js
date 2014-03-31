@@ -151,9 +151,11 @@ App = {
                 var locationIcon = L.icon({
                         iconUrl: 'images/locationIcon.png',
                         iconSize:     [32, 32], // size of the icon
-                        iconAnchor:   [15, 15] // point of the icon which will correspond to marker's location
-                    });
-				this.homeMarker = L.marker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
+                        iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+                        className: "current-location"   
+                });
+				this.homeMarker = L.rotatedMarker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
+                this.homeMarker.options.angle = App.home.heading;
 			} else {
 				this.homeMarker.setLatLng([point.lat, point.lon]).update();
 			}
@@ -209,7 +211,8 @@ App = {
 				navigator.geolocation.getCurrentPosition(function(position){
 					App.home = {
 						lat : position.coords.latitude,
-						lon :  position.coords.longitude
+						lon :  position.coords.longitude,
+                        heading : position.coords.heading
 					};
 					console.log('getting getClosesPollingStation');
 					that._renderHome(App.home);
@@ -343,9 +346,44 @@ App = {
 		}).addTo(that.map);
 		this.layers.push(districts);
 	},
+    trackLocation : function (active,sec){
+        var self = this; 
+        if(active) {
+           window.setInterval(function() {
+            self.getUserGeoLocation();
+            }, sec*1000);
+            return true;   
+        }
+        return false;
+    },    
 };
 
 App.Map.init();
-
+//if we want to track the user movements 
+// @active :enabled  set to false to disable it
+//@sec  refresh time in seconds      
+App.Map.trackLocation(true,5);
+// MIT-licensed code by Benjamin Becquet
+// https://github.com/bbecquet/Leaflet.PolylineDecorator
+L.RotatedMarker = L.Marker.extend({
+  options: { angle: 0 },
+  _setPos: function(pos) {
+    L.Marker.prototype._setPos.call(this, pos);
+    if (L.DomUtil.TRANSFORM) {
+      // use the CSS transform rule if available
+      this._icon.style[L.DomUtil.TRANSFORM] += ' rotate(' + this.options.angle + 'deg)';
+    } else if (L.Browser.ie) {
+      // fallback for IE6, IE7, IE8
+      var rad = this.options.angle * L.LatLng.DEG_TO_RAD,
+      costheta = Math.cos(rad),
+      sintheta = Math.sin(rad);
+      this._icon.style.filter += ' progid:DXImageTransform.Microsoft.Matrix(sizingMethod=\'auto expand\', M11=' +
+        costheta + ', M12=' + (-sintheta) + ', M21=' + sintheta + ', M22=' + costheta + ')';
+    }
+  }
+});
+L.rotatedMarker = function(pos, options) {
+    return new L.RotatedMarker(pos, options);
+};
 
 }());
