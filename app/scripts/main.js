@@ -148,7 +148,12 @@ App = {
 
 		_renderHome : function(point){
 			if (!this.homeMarker) {
-				this.homeMarker = L.marker([point.lat, point.lon]).addTo(this.map);
+                var locationIcon = L.icon({
+                        iconUrl: 'images/locationIcon.png',
+                        iconSize:     [32, 32], // size of the icon
+                        iconAnchor:   [15, 15] // point of the icon which will correspond to marker's location
+                    });
+				this.homeMarker = L.marker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
 			} else {
 				this.homeMarker.setLatLng([point.lat, point.lon]).update();
 			}
@@ -157,7 +162,13 @@ App = {
 
 		_renderDestination: function(point, address){
 			if (!this.distanceMarker) {
-				this.distanceMarker = L.marker([point.lat, point.lon]).addTo(this.map);
+                /*var targetIcon = L.icon({
+                        iconUrl: 'images/Location-Marker.png',
+                        iconSize:     [32, 32], 
+                        iconAnchor:   [15, 15] 
+                    });
+				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);*/
+                this.distanceMarker = L.marker([point.lat, point.lon]).addTo(this.map);
 			} else {
 				console.log(this.distanceMarker);
 				this.distanceMarker.setLatLng([point.lat, point.lon]).update();
