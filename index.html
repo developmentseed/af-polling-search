@@ -10,7 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="styles/6c6e2a17.main.css">
+        <link rel="stylesheet" href="styles/e4eea868.main.css">
+        <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
         <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js"></script>
         <link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css" rel="stylesheet">
         <script src="//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.0.1/leaflet-omnivore.min.js"></script>
@@ -18,8 +19,6 @@
 
     </head>
     <body>
-
-        <div id="title">Afghanistan <br> Polling Stations <em>2014</em></div>
         <div class="select-style">
             <select id="districts">Enter location</select>
         </div>
@@ -28,10 +27,16 @@
         </div>
         <!-- <div id='map-overlay'></div> -->
         <a href="#/" id="back-button"><p>Home</p></a>
+        <div class="autolocate">
+            <a href="#/auto-map" id="auto-map">
+                <i class="fa fa-location-arrow fa-2x"></i>
+            </a>
+        </div>
         <div id="control">
-            <a href="#/manual-map" id="manual-map">Select<br>location</a>
-            <a href="#/auto-map" id="auto-map">Auto<br>geolocation</a>
-            <a href="#/view-map" id="view-map">View map</a>
+            <a href="#/manual-map" id="manual-map">Select location</a>
+            <a href="#" id="view-map">
+                <span class="title">Votehere.af<span class="logo"></span></span>
+            </a>
         </div>
 
         <label id="narrative"></label>
@@ -53,7 +58,7 @@
 
         <script src="scripts/0cdf77d8.vendor.js"></script>
 
-        <script src="scripts/4337b392.main.js"></script>
+        <script src="scripts/e416ec77.main.js"></script>
 
         <script src="scripts/3ac34743.plugins.js"></script>
 </body>
