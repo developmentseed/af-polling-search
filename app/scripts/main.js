@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.map-hjp22ek6,nate.gf6o5hfr';
+			var baseMap = 'afghan-open.map-hm1jel3b,nate.gf6o5hfr';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
@@ -77,8 +77,6 @@ App = {
 				$('#title').html('');
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
-				$('#control').fadeOut(100);
-				$('#back-button').fadeIn(100);
 				$('#cross-hair').removeClass('hide');
 				that._addDrag();
 				that.view = 'auto';
