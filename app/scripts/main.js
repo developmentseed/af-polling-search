@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.map-hjp22ek6,nate.gf6o5hfr';
+			var baseMap = 'afghan-open.whk0rudi,nate.gf6o5hfr';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
@@ -77,8 +77,6 @@ App = {
 				$('#title').html('');
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
-				$('#control').fadeOut(100);
-				$('#back-button').fadeIn(100);
 				$('#cross-hair').removeClass('hide');
 				that._addDrag();
 				that.view = 'auto';
@@ -148,7 +146,12 @@ App = {
 
 		_renderHome : function(point){
 			if (!this.homeMarker) {
-				this.homeMarker = L.marker([point.lat, point.lon]).addTo(this.map);
+				var locationIcon = L.divIcon({
+                        className: "current-location",
+						iconSize: [20, 20],
+						iconAnchor: [8,12]
+                });
+				this.homeMarker = L.marker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
 			} else {
 				this.homeMarker.setLatLng([point.lat, point.lon]).update();
 			}
@@ -157,7 +160,12 @@ App = {
 
 		_renderDestination: function(point, address){
 			if (!this.distanceMarker) {
-				this.distanceMarker = L.marker([point.lat, point.lon]).addTo(this.map);
+				 var targetIcon = L.divIcon({
+						className: "dest-location",
+						iconSize: [30, 30],
+						iconAnchor: [15,17]
+                    });
+				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);
 			} else {
 				console.log(this.distanceMarker);
 				this.distanceMarker.setLatLng([point.lat, point.lon]).update();
