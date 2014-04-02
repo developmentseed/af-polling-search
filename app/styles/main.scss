@@ -207,11 +207,12 @@ a#back-button:hover{
     float: left;
     margin-left:5px;
 }
+#content .logo,
 #control .logo {
     float:left;
     display: block;
     background: transparent url("../images/sprite.png") no-repeat -22px 0px;
-    width:55px;
+    width:54px;
     height:25px;
     text-indent:-999em;
     margin: 0px auto 0px;
@@ -222,7 +223,7 @@ a#back-button:hover{
     z-index: 99;
     position:absolute;
     right: 15px;
-    bottom: 100px;
+    bottom: 105px;
     background: #fff;
     height: 35px;
     width: 35px;
@@ -240,6 +241,24 @@ a#back-button:hover{
     padding: 4px 0px 0px 4px;
 }
 
+.language {
+    z-index: 99;
+    position:absolute;
+    right: 15px;
+    bottom: 150px;
+    background: #fff;
+    height: 35px;
+    width: 35px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+.language a {
+    position: absolute;
+    font-weight: bold;
+    color: #333;
+    padding: 8px 0px 0px 8px;
+}
+
 .current-location {
     left: 16px;
     width: 10px;
@@ -255,6 +274,33 @@ a#back-button:hover{
     background-image: none;
     border-radius: 15px;
     background-color: rgba(86,194,98,0.8);
+}
+
+.mapbox-control-info {
+    bottom: 65px;
+    right: 20px;
+}
+
+.about-link {
+    position: absolute;
+    bottom: 82px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    border-radius:50%;
+    border: 0px solid #fff;
+    z-index:1;
+}
+.about-link a {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.about-link i {
+    height: 100%;
+    width: 100%;
+    font-size: 1.2em;
 }
 
 /* Mobile styles */
@@ -278,4 +324,49 @@ a#back-button:hover{
   #narrative {
       font-size: 1em;
   }
+  #back-button {
+      margin-left:0px;
+  }
+}
+
+/* About Page */
+#content h1.title {
+    font-family: 'Montserrat', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color: #333;
+    margin-bottom: 30px;
+}
+#content h1,
+#content h2,
+#content h3,
+#content a {
+    font-family: 'Montserrat', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+#content .logo {
+    margin-top: 7px;
+}
+
+#content {
+    width:100%;
+    height:100%;
+}
+
+#content div {
+    width: 55%;
+    position: relative;
+    left: 20%;
+    top: 20px;
+}
+#content p.frame {
+    margin-bottom: 30px;
+}
+
+#content .frame {
+    width: 55%;
+    position: relative;
+    left: 20%;
+    margin-bottom: 30px;
 }
