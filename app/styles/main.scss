@@ -240,6 +240,24 @@ a#back-button:hover{
     padding: 4px 0px 0px 4px;
 }
 
+.language {
+    z-index: 99;
+    position:absolute;
+    right: 15px;
+    bottom: 145px;
+    background: #fff;
+    height: 35px;
+    width: 35px;
+    border: 1px solid #999;
+    border-radius: 3px;
+}
+.language a {
+    position: absolute;
+    font-weight: bold;
+    color: #333;
+    padding: 8px 0px 0px 8px;
+}
+
 .current-location {
     left: 16px;
     width: 10px;
@@ -278,4 +296,43 @@ a#back-button:hover{
   #narrative {
       font-size: 1em;
   }
+  #back-button {
+      margin-left:0px;
+  }
+}
+
+/* About Page */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+#content {
+    width:100%;
+    height:100%;
+}
+
+#content div {
+    position: relative;
+    left: 100px;
+    top: 20px;
+}
+#content p {
+    margin-bottom: 30px;
+}
+
+#content .frame {
+    position: relative;
+    left: 100px;
+    margin-bottom: 30px;
+}
+
+#content pre {
+    width: 50%;
 }

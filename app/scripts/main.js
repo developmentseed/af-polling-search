@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.whk0rudi,nate.gf6o5hfr';
+			var baseMap = 'afghan-open.311hsemi,nate.gf6o5hfr';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
@@ -191,8 +191,11 @@ App = {
 
 				var dist = (distance(App.home.lat, App.home.lon, point.lat, point.lon, 'K')).toFixed(2);
 
-				$('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
-					'. You are: '+dist + ' km away.' );
+				// $('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
+				// 	'. You are: '+dist + ' km away.' );
+				var dari1 = "نزدیک ترین مرکز رای دهی در";
+				var dari2 = "کیلو متری قرار دارد";
+				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ,' + address.name + ' ' + dist + ' ' + dari2 + '.');
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
@@ -265,7 +268,7 @@ App = {
 
 		$.ajax({
 			type: "GET",
-			url: "data/data.csv",
+			url: "data/data_dr.csv",
 			dataType: "text",
 			success: function(data) {processData(data);}
 		});
@@ -287,18 +290,18 @@ App = {
 		};
 		for (var i = 1; i<App.pollingStations.length;i++){
 			var p1 = {'x':App.home.lat, 'y':App.home.lon};
-			var p2 = {'x':App.pollingStations[i][13], 'y':App.pollingStations[i][12]};
+			var p2 = {'x':App.pollingStations[i][0], 'y':App.pollingStations[i][1]};
 			var len = lineDistance(p1,p2);
 			if (len < min){
 				min = len;
 				minIndex = i;
 			}
 		}
-		var nearestPC = {'lon':App.pollingStations[minIndex][12], 'lat':App.pollingStations[minIndex][13]};
+		var nearestPC = {'lon':App.pollingStations[minIndex][1], 'lat':App.pollingStations[minIndex][0]};
 		console.log('NEAREST PC');
 		console.log(nearestPC);
 		var group = this._renderDestination(nearestPC, {
-			'name' : App.pollingStations[minIndex][6] , 'location' : App.pollingStations[minIndex][5]
+			'name' : App.pollingStations[minIndex][4] , 'location' : App.pollingStations[minIndex][3]
 		});
 		if (this.view == 'auto') {
 			this.map.fitBounds(group.getBounds());
@@ -310,11 +313,11 @@ App = {
 
 		var that = this;
 		var distNames = {};
-		var districts = omnivore.topojson('data/districts-en.json')
+		var districts = omnivore.topojson('data/districts-dari.json')
 		.on('ready', function() {
 
 			for (var key in districts._layers) {
-				distNames[districts._layers[key].feature.properties.dist_name] = districts._layers[key];
+				distNames[districts._layers[key].feature.properties.dari_dist] = districts._layers[key];
 			};
 
 			var distOptions = $('#districts');
