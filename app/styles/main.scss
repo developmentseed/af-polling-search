@@ -310,10 +310,10 @@ a#back-button:hover{
     font-size: 2.5em;
   }
   #control {
-      font-size: 0.8em;
+      font-size: 0.7em;
   }
   #control .title {
-      margin-left:0px;
+      margin-left:1px;
   }
   #control .logo {
       background: transparent url("../images/sprite.png") no-repeat -75px 0px;
@@ -321,11 +321,32 @@ a#back-button:hover{
       width:22px;
       margin-top:6px;
   }
+  #content .logo {
+      margin-top:8px;
+  }
   #narrative {
       font-size: 1em;
   }
   #back-button {
       margin-left:0px;
+  }
+
+  #content h1.title {
+      font-size: 30px;
+  }
+  #content .about {
+      width: 75%;
+      left: 10%;
+  }
+  #content .embed {
+      display:none;
+  }
+  #content div.frame {
+      width: 75%;
+      left: 10%!important;
+  }
+  #content pre {
+      width: auto!important;
   }
 }
 
