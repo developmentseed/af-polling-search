@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.311hsemi,nate.gf6o5hfr';
+			var baseMap = 'afghan-open.311hsemi,nate.qlbrcnmi';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
