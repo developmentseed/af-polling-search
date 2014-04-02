@@ -348,10 +348,13 @@ a#back-button:hover{
   #content pre {
       width: auto!important;
   }
+  #content .about h2 {
+      font-size: 28px;
+  }
 }
 
 /* About Page */
-#content h1.title {
+#content .about h1.title {
     font-family: 'Montserrat', sans-serif;
     text-transform:uppercase;
     letter-spacing:1px;
@@ -365,6 +368,9 @@ a#back-button:hover{
     font-family: 'Montserrat', sans-serif;
     text-transform:uppercase;
     letter-spacing:1px;
+}
+#content p {
+    font-family: 'Montserrat', sans-serif;
 }
 #content .logo {
     margin-top: 7px;
