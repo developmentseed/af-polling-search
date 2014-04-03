@@ -303,9 +303,11 @@ module.exports = function (grunt) {
                         'styles/fonts/{,*/}*.*',
                         'styles/font-awesome/css/font-awesome.min.css',
                         'styles/font-awesome/fonts/*.*',
+                        'styles/mobile.css',
                         'data/**',
                         'about/**',
-                        'en/**'
+                        'en/**',
+                        'CNAME'
                     ]
                 }]
             },

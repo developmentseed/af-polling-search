@@ -61,8 +61,7 @@ a:hover {
 }
 
 #districts {
-    margin: 4px 0px 0px 20px!important;
-    padding:0px!important;
+    margin: 0px 0px 0px 20px;
 }
 
 #control{
@@ -144,7 +143,7 @@ a#view-map{
     z-index: 3;
     bottom:0px;
     left: 0px;
-    width:40%;
+    width:35%;
     height: 50px;
     padding-top: 20px;
     display: none;
@@ -166,7 +165,7 @@ a#back-button:hover{
 
 .select-style {
     text-align: center;
-	width:60%;
+	width:65%;
 	height:70px;
 	position:absolute;
 	bottom:0px;
@@ -176,16 +175,14 @@ a#back-button:hover{
     background: #101010;
     display:none;
     z-index:4;
+    margin:0px;
 }
 .select-style:hover {
     background:#212121;
 }
 
 .select-style select {
-    padding: 5px 8px 0 20px;
     height: 50px !important;
-    padding-top:20px;
-    width: 130%;
     border: none;
     box-shadow: none;
     background: transparent;
@@ -271,7 +268,7 @@ a#back-button:hover{
     height: 10px;
     background-image: none;
     border-radius: 10px;
-    background-color: rgba(68,68,68,0.8);
+    background-color: rgba(153,153,153,0.7);
 }
 .dest-location {
     background-image: none;
@@ -342,63 +339,6 @@ a#back-button:hover{
     margin-left:10px;
 }
 
-
-/* Mobile styles */
-
-@media only screen and (max-width: 480px) {
-  .map-tooltip {
-      font-size: 0.8em;
-  }
-  .autolocate {
-      left: 5px;
-  }
-  #title {
-    font-size: 2.5em;
-  }
-  #control {
-      font-size: 0.7em;
-  }
-  #control .title {
-      margin-left:1px;
-  }
-  #control .logo {
-      background: transparent url("../images/sprite.png") no-repeat -75px 0px;
-      margin-left: 0px;
-      width:22px;
-      margin-top:6px;
-  }
-  #content .logo {
-      margin-top:8px;
-  }
-  #narrative {
-      font-size: 1.5em;
-      margin-right: 20px;
-  }
-  #back-button {
-      margin-left:0px;
-  }
-
-  #content h1.title {
-      font-size: 30px;
-  }
-  #content .about {
-      width: 75%;
-      left: 10%;
-  }
-  #content .embed {
-      display:none;
-  }
-  #content div.frame {
-      width: 75%;
-      left: 10%!important;
-  }
-  #content pre {
-      width: auto!important;
-  }
-  #content .about h2 {
-      font-size: 28px;
-  }
-}
 
 /* About Page */
 #content .about h1.title {
