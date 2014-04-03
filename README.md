@@ -11,7 +11,7 @@ Build: `grunt build`
 
 _[acrylc-af-pcsearch](https://github.com/developmentseed/af-polling-search/tree/acrylc-af-pcsearch) branch tracking work from: https://github.com/acrylc/af-pcsearch/tree/master_
 
-#### Workflow:
+#### Workflow
 `master` branch will contain production files. `gh-pages` will mirror the `dist/` folder. Branch from `master` to do development. Pull request into `master`. Then build and push to `gh-pages.
 
 1. Work in `app/` folder.
