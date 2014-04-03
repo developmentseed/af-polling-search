@@ -1,0 +1,21 @@
+/* Mobile styles */
+#content h1.title {
+  font-size: 30px;
+}
+#content .about {
+  width: 75%;
+  left: 10%;
+}
+#content .embed {
+  display:none;
+}
+#content div.frame {
+  width: 75%;
+  left: 10%!important;
+}
+#content pre {
+  width: auto!important;
+}
+#content .about h2 {
+  font-size: 28px;
+}
