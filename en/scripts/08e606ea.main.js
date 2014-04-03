@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.311hsemi,afghan-open.8m4y4x6r';
+			var baseMap = 'afghan-open.311hsemi,afghan-open.nckmaemi';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
@@ -27,7 +27,7 @@ App = {
 			this.view = 'home';
 
 			function home() {
-				// console.log(that.map);
+				console.log(that.map);
 				$('#control').fadeIn(100);
 				$('#title').fadeIn(100);
 				//$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
@@ -167,9 +167,9 @@ App = {
                     });
 				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);
 			} else {
-				// console.log(this.distanceMarker);
+				console.log(this.distanceMarker);
 				this.distanceMarker.setLatLng([point.lat, point.lon]).update();
-				// console.log(this.distanceMarker);
+				console.log(this.distanceMarker);
 			}
 
 			// from : http://www.geodatasource.com/developers/javascript
@@ -191,11 +191,8 @@ App = {
 
 				var dist = (distance(App.home.lat, App.home.lon, point.lat, point.lon, 'K')).toFixed(2);
 
-				// $('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
-				// 	'. You are: '+dist + ' km away.' );
-				var dari1 = "نزدیک ترین مرکز رای دهی در";
-				var dari2 = "کیلو متری قرار دارد";
-				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ,' + address.name + ' ' + dist + ' ' + dari2 + '.');
+				$('#narrative').html('The closest polling station is at: <em>'+address.name + ' , ' +address.location +
+					'</em>, '+dist + ' km away.' );
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
@@ -211,13 +208,13 @@ App = {
 						lat : position.coords.latitude,
 						lon :  position.coords.longitude
 					};
-					// console.log('getting getClosesPollingStation');
+					console.log('getting getClosesPollingStation');
 					that._renderHome(App.home);
 					that.getClosestPollingStation();
 				});
 				return true;
 			} else {
-				// console.log('none');
+				console.log('none');
 				return false;
 			}
 		},
@@ -262,13 +259,13 @@ App = {
 				arrData[ arrData.length - 1 ].push( strMatchedValue );
 			}
 			App.pollingStations= arrData;
-			// console.log( arrData.length );
+			console.log( arrData.length );
 			that.getNearestNeighbor();
 		}
 
 		$.ajax({
 			type: "GET",
-			url: "data/data_dr.csv",
+			url: "../data/data_en.csv",
 			dataType: "text",
 			success: function(data) {processData(data);}
 		});
@@ -298,8 +295,8 @@ App = {
 			}
 		}
 		var nearestPC = {'lon':App.pollingStations[minIndex][1], 'lat':App.pollingStations[minIndex][0]};
-		// console.log('NEAREST PC');
-		// console.log(nearestPC);
+		console.log('NEAREST PC');
+		console.log(nearestPC);
 		var group = this._renderDestination(nearestPC, {
 			'name' : App.pollingStations[minIndex][4] , 'location' : App.pollingStations[minIndex][3]
 		});
@@ -313,24 +310,24 @@ App = {
 
 		var that = this;
 		var distNames = {};
-		var districts = omnivore.topojson('data/districts-dari.json')
+		var districts = omnivore.topojson('../data/districts-en.json')
 		.on('ready', function() {
 
 			for (var key in districts._layers) {
-				distNames[districts._layers[key].feature.properties.dari_dist] = districts._layers[key];
+				distNames[districts._layers[key].feature.properties.dist_name] = districts._layers[key];
 			};
 
 			var distOptions = $('#districts');
 
 			$.each(distNames, function(name) {
-				// console.log(name);
+				console.log(name);
 				distOptions.append($('<option />').val(name).text(name));
 			});
 			distOptions.change(function() {
 				var district = $('select option:selected').val();
 				that.map.fitBounds(distNames[district]);
 				that.map.on('moveend', function() {
-					// console.log('zoomed in')
+					console.log('zoomed in')
 					App.home = {
 						lat: that.map.getCenter().lat,
 						lon: that.map.getCenter().lng,
