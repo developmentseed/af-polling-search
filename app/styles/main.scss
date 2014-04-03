@@ -226,6 +226,9 @@ a#back-button:hover{
     border: 1px solid #999;
     border-radius: 3px;
 }
+.autolocate.dari {
+    width: 200px;
+}
 
 .autolocate a {
     color: #333;
@@ -331,12 +334,22 @@ a#back-button:hover{
     height: 27px;
 }
 
-.tooltip-location{
+.tooltip-en .tooltip-location{
     float:left;
 }
-.tooltip-status{
+.tooltip-en .tooltip-status{
     float:left;
     margin-left:10px;
+}
+
+.tooltip-dr .tooltip-location {
+    float:right!important;
+    margin-left:10px;
+    direction: rtl;
+}
+.tooltip-dr .tooltip-status {
+    float: right!important;
+    direction: rtl;
 }
 
 
