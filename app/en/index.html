@@ -20,38 +20,36 @@
 
     </head>
     <body>
-        <div class='select-style'>
-            <select id="districts">Enter location</select>
-        </div>
         <div id='map'>
-            <div id='cross-hair' class='hide'>
+            <div id='cross-hair'>
                 <i id='cross-hair' class="fa fa-crosshairs"></i>
             </div>
         </div>
-        <a href="" id='back-button'><p>Back</p></a>
-        <div class='language'>
-            <a href="../">دری</a>
+
+        <div class='control'>
+            <div id='control'>
+                <a href="#/manual-map" id='manual-map'>Choose your district</a>
+                <a href="" id='view-map'>
+                    <span class='title'><img class='logo' src='../images/logo.png'/>votehere.af</span>
+                </a>
+            </div>
+            <a class='select-style'><select id="districts">Enter location</select></a>
+            <a href="" id='back-button' class='control'><p>Back</p></a>
         </div>
-        <div class='autolocate'>
-            <a href="#/auto-map" id='auto-map'>
-                <i class="fa fa-location-arrow fa-2x"></i>
-                <span class="locate">Find your location</span>
-            </a>
-        </div>
-        <div id='control'>
-            <a href="#/manual-map" id='manual-map'>Choose your district &#9660;</a>
-            <a href="" id='view-map'>
-                <span class='title'>Votehere.af<span class='logo'></span></span>
-            </a>
-        </div>
+        <a href='en' class='language control-light'>EN</a>
+
+        <a href="#/auto-map" id='auto-map' class='autolocate dari control-light'>
+            <i class="fa fa-location-arrow"></i>
+        </a>
+
+        <!-- footnote link -->
         <div class='about-link'>
-            <a href="../about">
-                <i class="fa fa-question-circle"></i>
+            <a href="about">
+                about this site
             </a>
         </div>
 
-        <label id='narrative'></label>
-
+        <div id='narrative' style='direction:rtl;'></div>
 
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
