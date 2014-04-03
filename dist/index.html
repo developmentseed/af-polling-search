@@ -10,8 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="styles/25a26d17.main.css">
-        <link rel="stylesheet" href="styles/db382a8c.mobile.css" media="only screen and (max-width: 640px)">
+        <link rel="stylesheet" href="styles/3745b972.main.css">
+        <link rel="stylesheet" href="styles/ef6001d9.mobile.css" media="only screen and (max-width: 640px)">
         <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
         <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js"></script>
         <link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css" rel="stylesheet">
@@ -20,37 +20,36 @@
 
     </head>
     <body>
-        <div class="select-style">
-            <select id="districts">Enter location</select>
-        </div>
         <div id="map">
-            <div id="cross-hair" class="hide">
+            <div id="cross-hair">
                 <i id="cross-hair" class="fa fa-crosshairs"></i>
             </div>
         </div>
-        <a href="" id="back-button"><p>صفحه اصلی</p>
-            <div class="language">
-            <a href="en">EN</a>
+
+        <div class="control">
+            <div id="control">
+                <a href="#/manual-map" id="manual-map">ولسوالی تان را انتخاب کنید</a>
+                <a href="" id="view-map">
+                    <span class="title"><img class="logo" src="images/283167c4.logo.png">votehere.af</span>
+                </a>
+            </div>
+            <a class="select-style"><select id="districts">Enter location</select></a>
+            <a href="" id="back-button" class="control"><p>صفحه اصلی</p></a>
         </div>
-        <div class="autolocate dari">
-            <a href="#/auto-map" id="auto-map">
-                <i class="fa fa-location-arrow fa-2x"></i>
-                <span class="locate">موقعیت تان را پیدا کنید</span>
-            </a>
-        </div>
-        <div id="control">
-            <a href="#/manual-map" id="manual-map">&#9660; ولسوالی تان را انتخاب کنید</a>
-            <a href="" id="view-map">
-                <span class="title">votehere.af<span class="logo"></span></span>
-            </a>
-        </div>
+        <a href="en" class="language control-light">EN</a>
+
+        <a href="#/auto-map" id="auto-map" class="autolocate dari control-light">
+            <i class="fa fa-location-arrow"></i>
+        </a>
+
+        <!-- footnote link -->
         <div class="about-link">
             <a href="about">
-                <i class="fa fa-question-circle"></i>
+                about this site
             </a>
         </div>
 
-        <label id="narrative" style="direction:rtl"></label>
+        <div id="narrative" style="direction:rtl"></div>
 
 
         <!--[if lt IE 7]>
@@ -70,8 +69,8 @@
 
         <script src="scripts/0cdf77d8.vendor.js"></script>
 
-        <script src="scripts/eac61d86.main.js"></script>
+        <script src="scripts/036bc14d.main.js"></script>
 
         <script src="scripts/3ac34743.plugins.js"></script>
-</a></body>
+</body>
 </html>
