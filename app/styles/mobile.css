@@ -1,3 +1,8 @@
+/*Body*/
+body {
+  overflow-x: hidden;
+}
+
 /* Mobile styles */
 .map-tooltip {
   font-size: 0.8em;
@@ -38,22 +43,17 @@ font-size: 2.5em;
 }
 
 #content h1.title {
-  font-size: 30px;
-}
-#content .about {
-  width: 75%;
-  left: 10%;
+  font-size: 26px;
 }
 #content .embed {
   display:none;
-}
-#content div.frame {
-  width: 75%;
-  left: 10%!important;
 }
 #content pre {
   width: auto!important;
 }
 #content .about h2 {
   font-size: 28px;
+}
+#content {
+  padding: 20px 20px !important;
 }
