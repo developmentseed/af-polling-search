@@ -191,11 +191,8 @@ App = {
 
 				var dist = (distance(App.home.lat, App.home.lon, point.lat, point.lon, 'K')).toFixed(2);
 
-				// $('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
-				// 	'. You are: '+dist + ' km away.' );
-				var dari1 = "نزدیک ترین مرکز رای دهی در";
-				var dari2 = "کیلو متری قرار دارد";
-				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ,' + address.name + ' ' + dist + ' ' + dari2 + '.');
+				$('#narrative').html('The closest polling station is at: <em>'+address.name + ' , ' +address.location +
+					'</em>, '+dist + ' km away.' );
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
@@ -268,7 +265,7 @@ App = {
 
 		$.ajax({
 			type: "GET",
-			url: "data/data_dr.csv",
+			url: "../data/data_en.csv",
 			dataType: "text",
 			success: function(data) {processData(data);}
 		});
@@ -313,11 +310,11 @@ App = {
 
 		var that = this;
 		var distNames = {};
-		var districts = omnivore.topojson('data/districts-dari.json')
+		var districts = omnivore.topojson('../data/districts-en.json')
 		.on('ready', function() {
 
 			for (var key in districts._layers) {
-				distNames[districts._layers[key].feature.properties.dari_dist] = districts._layers[key];
+				distNames[districts._layers[key].feature.properties.dist_name] = districts._layers[key];
 			};
 
 			var distOptions = $('#districts');
