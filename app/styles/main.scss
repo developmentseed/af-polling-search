@@ -2,18 +2,22 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-
 @import 'sass-bootstrap/lib/bootstrap';
 $color1: rgb(147,107,232);
 $color2: rgb(127,111,225);
 $color3: rgb(90,103,232);
+
+$nearblack: #111;
+$graydark: #444;
+$graylight:#888;
+$grass: #64B66A;
 
 path {
   fill: #333;
   fill-opacity: 0;
   stroke: #555;
   stroke-width: 0.5px;
-}
+  }
 
 .div-icon {
 	border-radius: 30px;
@@ -21,34 +25,38 @@ path {
 	height: 30px;
 	border-color: lighten(rgba(0,0,177,0.1), 30%);
 	background-color: rgba(0,0,177,0.2);
-}
+  }
+
 .hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-}
+  margin: 50px auto 0 auto;
+  width: 300px;
+  }
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+  }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  }
 a {
 	border:none;
 	border-radius:none;
 	text-decoration: none;
-}
+  }
 a:hover {
 	text-decoration: none;
-}
+  }
 
 #map{
 	width:100%;
 	height:100%;
 	position:fixed;
 	z-index:1;
-}
+  }
 
 #map-overlay{
 	width:100%;
@@ -58,270 +66,149 @@ a:hover {
 	position:absolute;
 	top:0px;
 	left:0px;
-}
-
-#districts {
-    margin: 0px 0px 0px 20px;
-}
-
-#control{
-	z-index:3;
-	position:relative;
-}
+  }
 
 #narrative{
+  position: absolute;
 	z-index:5;
-	position: absolute;
-	font-size:2.0em;
-	line-height: 1.5em;
-	margin-left: 10px;
-    margin-right: 30px;
-	background-color: rgba(255,255,255,0.8);
-    top: 48px;
-    left: 1px;
-}
+	background-color: white;
+  width:50%;
+  left:25%;
+  top:10px;
+  border-radius: 3px;
+  }
 
 #cross-hair {
-    position: fixed;
-    top:50%;
-    left:50%;
-    z-index:1;
-    line-height:0;
-    margin: -2px 0px 0px -5px;
-    font-size: 1.2em;
-}
-#cross-hair .hide {
-    display:none!important;
-}
+  position: fixed;
+  top:50%;
+  left:50%;
+  z-index:1;
+  line-height:0;
+  margin: -2px 0px 0px -5px;
+  font-size: 1.2em;
+  }
 
+#cross-hair.hide {
+  display:none!important;
+  }
 
-#control{
-
-	position:fixed;
-	bottom:0px;
-	width:100%;
-	text-align: center;
-	a {
-        width:60%;
-		height:50px;
-		display:inline-block;
-		padding-top: 20px;
-		float:right;
-		background:#101010;
-		border:0px solid white;
-		color:rgb(250,250,250);
-        font-family: 'Montserrat', sans-serif;
-        text-transform:uppercase;
-		letter-spacing:1px;
-	}
-    a:hover {
-        background:#212121;
+.control {
+  a {
+    position:absolute;
+    bottom:0;
+    width:43%;
+    height:40px;
+    padding:2%;
+    margin:2%;
+    overflow:hidden;
+    letter-spacing: 1px;
+    background:$nearblack;
+    color:white;
+    border-radius:3px;
+    text-transform: uppercase;
+    z-index:3;  
     }
-
-}
-
-a#view-map{
-    width:40%;
-	background:#101010;
-}
-
-#title{
-	position:absolute;
-	z-index:5;
-	top:30%;
-	text-align:center;
-	font-size:4em;
-	line-height: 1.3em;
-	font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-	letter-spacing:2px;
-	width:100%;
-}
-
-#back-button {
-    position:fixed;
-    z-index: 3;
-    bottom:0px;
-    left: 0px;
-    width:35%;
-    height: 50px;
-    padding-top: 20px;
-    display: none;
-    right:0px;
-    background: #101010;
-    overflow: hidden;
-    color:rgb(250,250,250);
-    font-family: 'Montserrat', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    line-height:1.3em;
-    p {
-        margin-left: 30px;
+  a p {margin:0;}
+  a:hover {color:white;}
+  a#manual-map:hover {background:darken($grass,10%);}
+  a#manual-map,
+  a.select-style {
+    right:0;
+    background:darken($grass,20%);
     }
-}
-a#back-button:hover{
-    background: #212121;
-}
+  a#view-map,
+  a#back-button {
+    left:0;
+    }
+  }
 
-.select-style {
-    text-align: center;
-	width:65%;
-	height:70px;
-	position:absolute;
-	bottom:0px;
-	right:0px;
-    border-radius: 0px;
-    overflow: hidden;
-    background: #101010;
-    display:none;
-    z-index:4;
-    margin:0px;
-}
-.select-style:hover {
-    background:#212121;
-}
+.control-light {
+  position:absolute;
+  width:25px;
+  height:25px;
+  padding:1px 1px 0 0;
+  left: 10px;
+  top:70px;
+  background: white;
+  color:$grass;
+  border: 1px solid $grass;
+  border-radius: 3px;
+  text-align: center;
+  z-index: 5;
+  }
+.control-light:hover {color:$grass;}
+
+.language{top:104px;}
+
+#control {.logo {margin-right:5px;}}
+
+#back-button,.select-style {display: none;}
+
 
 .select-style select {
-    height: 50px !important;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    z-index:4;
-    color:rgb(250,250,250);
-    font-family: 'Montserrat', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
+  width:100%;
+  padding-left:5%;
+  margin-top:-1.5%;
+  border:none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  z-index:4;
+  color:white;
+  }
+.select-style:before {
+  content:'▼';
+  display:block;
+  position:absolute;
+  font-size:0.8em;
+  top:30%;
+  left:3%;
+  }
 
-.select-style select:focus {
-    outline: none;
-}
-
-#control .title {
-    float: left;
-    margin-left:5px;
-}
-#content .logo,
-#control .logo {
-    float:left;
-    display: block;
-    background: transparent url("../images/sprite.png") no-repeat -22px 0px;
-    width:54px;
-    height:25px;
-    text-indent:-999em;
-    margin: 0px auto 0px;
-    overflow: hidden;
-}
-
-.autolocate {
-    z-index: 99;
-    position:absolute;
-    left: 15px;
-    bottom: 106px;
-    background: #fff;
-    height: 35px;
-    width: 235px;
-    border: 1px solid #999;
-    border-radius: 3px;
-}
-.autolocate.dari {
-    width: 200px;
-}
-
-.autolocate a {
-    color: #333;
-}
-
-.autolocate .locate {
-    float: left;
-    padding: 8px 2px 2px 8px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-
-.autolocate i {
-    float: left;
-    padding: 4px 0px 0px 4px;
-}
-
-.language {
-    z-index: 99;
-    position:absolute;
-    right: 15px;
-    bottom: 106px;
-    background: #fff;
-    height: 35px;
-    width: 35px;
-    border: 1px solid #999;
-    border-radius: 3px;
-}
-.language a {
-    position: absolute;
-    font-weight: bold;
-    color: #333;
-    padding: 8px 0px 0px 8px;
+#content .logo {
+  float:left;
+  display: block;
+  background: transparent url("../images/sprite.png") no-repeat -22px 0px;
+  width:54px;
+  /*height:20px;*/
+  text-indent:-999em;
+  margin: 0px auto 0px;
+  overflow: hidden;
 }
 
 .current-location {
-    left: 16px;
-    width: 10px;
-    height: 10px;
-    background-image: none;
-    border-radius: 10px;
-    background-color: rgba(153,153,153,0.7);
-}
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  background-image: none;
+  border-radius: 10px;
+  background-color: rgba(153,153,153,0.7);
+  }
 .dest-location {
-    background-image: none;
-    border-radius: 50%;
-    background-color: rgba(86,194,98,0.7);
-}
+  background-image: none;
+  border-radius: 50%;
+  background-color: rgba(86,194,98,0.7);
+  }
 
 .mapbox-control-info {
-    bottom: 65px;
-    right: 24px;
-}
+  bottom: 63px;
+  right:90px;
+  }
 
 .about-link {
-    position: absolute;
-    bottom: 75px;
-    right: 6px;
-    width: 25px;
-    height: 25px;
-    background: rgba(255,255,255,0.3);
-    border-radius:50%;
-    border: 0px solid #fff;
-    z-index:1;
-}
-.about-link:hover {
-    background: rgba(255,255,255,0.6);
-}
-.about-link a {
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-.about-link i {
-    padding: 4px 0px 0px 5px;
-    height: 100%;
-    width: 100%;
-    font-size: 1.2em;
-}
+  position: absolute;
+  bottom: 75px;
+  right: 10px;
+  z-index: 1;
+  text-transform: uppercase;
+  font-weight:bold;
+  font-size:10px;
+  a {
+    color:$graydark;
+    }
+  }
 
 /* Leaflet items */
-.leaflet-control-zoom-out {
-    position:absolute;
-    top:0px;
-    left:27px;
-    border-left: 1px solid #ddd;
-    border-bottom: 0px solid #ddd;
-}
-.leaflet-control-zoom {
-    width: 60px;
-}
 
 .leaflet-top.leaflet-right {
     right:auto!important;
@@ -331,7 +218,6 @@ a#back-button:hover{
     left:77px;
     max-width:450px;
     padding: 5px;
-    height: 27px;
 }
 
 .tooltip-en .tooltip-location{

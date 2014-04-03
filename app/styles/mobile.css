@@ -1,42 +1,4 @@
 /* Mobile styles */
-.map-tooltip {
-  font-size: 0.8em;
-}
-.autolocate {
-  left: 5px;
-  font-size: 0.8em;
-  width: 180px;
-}
-.autolocate i {
-  font-size: 1.8em;
-  padding: 6px 0px 0px 2px;
-}
-#title {
-font-size: 2.5em;
-}
-#control {
-  font-size: 0.7em;
-}
-#control .title {
-  margin-left:1px;
-}
-#control .logo {
-  background: transparent url("../images/sprite.png") no-repeat -75px 0px;
-  margin-left: 0px;
-  width:22px;
-  margin-top:6px;
-}
-#content .logo {
-  margin-top:8px;
-}
-#narrative {
-  font-size: 1em;
-  margin-left:5px;
-}
-#back-button {
-  margin-left:0px;
-}
-
 #content h1.title {
   font-size: 30px;
 }
