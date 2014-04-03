@@ -27,7 +27,7 @@ App = {
 			this.view = 'home';
 
 			function home() {
-				console.log(that.map);
+				// console.log(that.map);
 				$('#control').fadeIn(100);
 				$('#title').fadeIn(100);
 				//$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
@@ -167,9 +167,9 @@ App = {
                     });
 				this.distanceMarker = L.marker([point.lat, point.lon], {icon:targetIcon}).addTo(this.map);
 			} else {
-				console.log(this.distanceMarker);
+				// console.log(this.distanceMarker);
 				this.distanceMarker.setLatLng([point.lat, point.lon]).update();
-				console.log(this.distanceMarker);
+				// console.log(this.distanceMarker);
 			}
 
 			// from : http://www.geodatasource.com/developers/javascript
@@ -211,13 +211,13 @@ App = {
 						lat : position.coords.latitude,
 						lon :  position.coords.longitude
 					};
-					console.log('getting getClosesPollingStation');
+					// console.log('getting getClosesPollingStation');
 					that._renderHome(App.home);
 					that.getClosestPollingStation();
 				});
 				return true;
 			} else {
-				console.log('none');
+				// console.log('none');
 				return false;
 			}
 		},
@@ -262,7 +262,7 @@ App = {
 				arrData[ arrData.length - 1 ].push( strMatchedValue );
 			}
 			App.pollingStations= arrData;
-			console.log( arrData.length );
+			// console.log( arrData.length );
 			that.getNearestNeighbor();
 		}
 
@@ -298,8 +298,8 @@ App = {
 			}
 		}
 		var nearestPC = {'lon':App.pollingStations[minIndex][1], 'lat':App.pollingStations[minIndex][0]};
-		console.log('NEAREST PC');
-		console.log(nearestPC);
+		// console.log('NEAREST PC');
+		// console.log(nearestPC);
 		var group = this._renderDestination(nearestPC, {
 			'name' : App.pollingStations[minIndex][4] , 'location' : App.pollingStations[minIndex][3]
 		});
@@ -323,14 +323,14 @@ App = {
 			var distOptions = $('#districts');
 
 			$.each(distNames, function(name) {
-				console.log(name);
+				// console.log(name);
 				distOptions.append($('<option />').val(name).text(name));
 			});
 			distOptions.change(function() {
 				var district = $('select option:selected').val();
 				that.map.fitBounds(distNames[district]);
 				that.map.on('moveend', function() {
-					console.log('zoomed in')
+					// console.log('zoomed in')
 					App.home = {
 						lat: that.map.getCenter().lat,
 						lon: that.map.getCenter().lng,
