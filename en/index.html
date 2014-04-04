@@ -10,8 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="../styles/3745b972.main.css">
-        <link rel="stylesheet" media="only screen and (max-width: 640px)" href="../styles/ef6001d9.mobile.css">
+        <link rel="stylesheet" href="../styles/25a26d17.main.css">
+        <link rel="stylesheet" media="only screen and (max-width: 640px)" href="../styles/db382a8c.mobile.css">
         <link rel="stylesheet" href="../styles/font-awesome/css/font-awesome.min.css">
         <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
@@ -20,36 +20,38 @@
 
     </head>
     <body>
+        <div class='select-style'>
+            <select id="districts">Enter location</select>
+        </div>
         <div id='map'>
-            <div id='cross-hair'>
+            <div id='cross-hair' class='hide'>
                 <i id='cross-hair' class="fa fa-crosshairs"></i>
             </div>
         </div>
-
-        <div class='control'>
-            <div id='control'>
-                <a href="#/manual-map" id='manual-map'>Choose your district</a>
-                <a href="" id='view-map'>
-                    <span class='title'><img class='logo' src='../images/283167c4.logo.png'/>votehere.af</span>
-                </a>
-            </div>
-            <a class='select-style'><select id="districts">Enter location</select></a>
-            <a href="" id='back-button' class='control'><p>Back</p></a>
+        <a href="" id='back-button'><p>Back</p></a>
+        <div class='language'>
+            <a href="../">دری</a>
         </div>
-        <a href='en' class='language control-light'>EN</a>
-
-        <a href="#/auto-map" id='auto-map' class='autolocate dari control-light'>
-            <i class="fa fa-location-arrow"></i>
-        </a>
-
-        <!-- footnote link -->
+        <div class='autolocate'>
+            <a href="#/auto-map" id='auto-map'>
+                <i class="fa fa-location-arrow fa-2x"></i>
+                <span class="locate">Find your location</span>
+            </a>
+        </div>
+        <div id='control'>
+            <a href="#/manual-map" id='manual-map'>Choose your district &#9660;</a>
+            <a href="" id='view-map'>
+                <span class='title'>Votehere.af<span class='logo'></span></span>
+            </a>
+        </div>
         <div class='about-link'>
-            <a href="about">
-                about this site
+            <a href="../about">
+                <i class="fa fa-question-circle"></i>
             </a>
         </div>
 
-        <div id='narrative' style='direction:rtl;'></div>
+        <label id='narrative'></label>
+
 
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
