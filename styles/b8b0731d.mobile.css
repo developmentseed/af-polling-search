@@ -1,0 +1,32 @@
+/*Body*/
+body {
+  overflow-x: hidden;
+}
+
+/* Mobile styles */
+#content h1.title {
+  font-size: 26px;
+}
+#content .embed {
+  display:none;
+}
+#content pre {
+  width: auto!important;
+}
+#content .about h2 {
+  font-size: 28px;
+}
+#content {
+  padding: 20px 20px !important;
+}
+
+.mapbox-control-info {
+  bottom: 65px;
+  right:90px;
+  }
+
+.about-link {
+  position: absolute;
+  bottom: 80px;
+  right: 10px;
+}
