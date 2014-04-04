@@ -307,6 +307,7 @@ module.exports = function (grunt) {
                         'data/**',
                         'about/**',
                         'en/**',
+                        'en/about/**',
                         'CNAME'
                     ]
                 }]

@@ -106,7 +106,7 @@ a:hover {
     color:white;
     border-radius:3px;
     text-transform: uppercase;
-    z-index:3;  
+    z-index:3;
     }
   a p {margin:0;}
   a:hover {color:white;}
@@ -167,13 +167,7 @@ a:hover {
 
 #content .logo {
   float:left;
-  display: block;
-  background: transparent url("../images/sprite.png") no-repeat -22px 0px;
-  width:54px;
-  /*height:20px;*/
-  text-indent:-999em;
-  margin: 0px auto 0px;
-  overflow: hidden;
+  margin-right:6px;
 }
 
 .current-location {
@@ -191,14 +185,14 @@ a:hover {
   }
 
 .mapbox-control-info {
-  bottom: 63px;
-  right:90px;
+  bottom: 108px;
+  right:100px;
   }
 
 .about-link {
   position: absolute;
-  bottom: 75px;
-  right: 10px;
+  bottom: 121px;
+  right: 20px;
   z-index: 1;
   text-transform: uppercase;
   font-weight:bold;
@@ -206,6 +200,9 @@ a:hover {
   a {
     color:$graydark;
     }
+    a:hover {
+      color:$graylight;
+      }
   }
 
 /* Leaflet items */
@@ -252,7 +249,7 @@ a:hover {
 #content h3,
 #content a {
     font-family: 'Montserrat', sans-serif;
-    
+
     letter-spacing:1px;
 }
 #content h2 {
@@ -294,5 +291,15 @@ a:hover {
    #content{
      overflow-x:hidden;
      width: auto;
+   }
+   .mapbox-control-info {
+     bottom: 85px;
+     right:90px;
+     }
+
+   .about-link {
+     position: absolute;
+     bottom: 100px;
+     right: 10px;
    }
 }
