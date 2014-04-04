@@ -76,6 +76,7 @@ App = {
 				$('.select-style').fadeIn(100);
 				$('#back-button').fadeIn(100);
 				$('#cross-hair').removeClass('hide');
+				$('#callout').fadeOut(100);
 				that._addDrag();
 				that.view = 'manual';
 			};
@@ -94,6 +95,7 @@ App = {
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
 				$('#cross-hair').removeClass('hide');
+				$('#callout').fadeOut(100);
                                 //$('.select-style').fadeOut(100);
 				that._addDrag();
 			};
@@ -415,4 +417,3 @@ window.App = App;
 $(document).ready(function() {
     App.Map.init();
 });
-
