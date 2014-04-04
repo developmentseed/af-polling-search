@@ -127,7 +127,7 @@ a:hover {
   position:absolute;
   width:25px;
   height:25px;
-  padding:1px 1px 0 0;
+  padding:1px 1px 0;
   left: 10px;
   top:70px;
   background: white;
@@ -139,7 +139,13 @@ a:hover {
   }
 .control-light:hover {color:$grass;}
 
-.language{top:104px;}
+.language{
+    line-height:25px;
+    top:104px;
+}
+.autolocate > i {
+    padding-top: 5px;
+}
 
 #control {.logo {margin-right:5px;}}
 
