@@ -15,6 +15,8 @@ App = {
 	// and other icons
 	App.Map = {
 
+                siteLang: 'dari',
+
 		init: function(){
 
 			var that = this;
@@ -25,6 +27,11 @@ App = {
 				}).setView([34.361370, 66.363099], 6);
 			this.layers = [];
 			this.view = 'home';
+
+                        if ($('body').hasClass('en')) {
+                            App.Map.siteLang = 'en';
+                        }
+
                         this.fillSelect();
 
 			function home() {
@@ -39,6 +46,7 @@ App = {
 				that.view = 'home';
 
 			}
+
 			function clear() {
 
 				// that.map.off('moveend');
@@ -320,9 +328,12 @@ App = {
 
         districts: {
             json: false,
-            url: 'data/districts-dari.json',
+            urlDari: 'data/districts-dari.json',
+            urlEn: 'data/districts-en.json',
             get: function(fn) {
-                var that = this,
+
+                var url = this.siteLang === 'dari' ? this.districts.urlDari : this.districts.urlEn,
+                    that = this,
                     topojson = this.districts.json;
 
                 if (topojson) {
@@ -330,7 +341,7 @@ App = {
                 }
 
                 else {
-                    topojson = omnivore.topojson(this.districts.url).on('ready', function() {
+                    topojson = omnivore.topojson(url).on('ready', function() {
                         that.districts.json = topojson;
                         if (fn) {
                             fn(topojson);
@@ -342,7 +353,9 @@ App = {
 
         fillSelect: function() {
             var get = $.proxy(this.districts.get, this),
-                that = this;
+                that = this,
+                default_text = this.siteLang === 'dari' ? 'ولسوالی تان را انتخاب کنید' : 'Choose your district',
+                prop = this.siteLang === 'dari' ? 'dari_dist' : 'dist_name';
 
             get(function(topojson) {
 
@@ -350,11 +363,11 @@ App = {
                     distOptions = $('#districts');
 
                 for (var key in topojson._layers) {
-                    distNames[topojson._layers[key].feature.properties.dari_dist] = topojson._layers[key];
+                    distNames[topojson._layers[key].feature.properties[prop]] = topojson._layers[key];
                 };
 
                 distOptions.append($('<option />')
-                                   .text('ولسوالی تان را انتخاب کنید')
+                                   .text(default_text)
                                    .val('default')
                                    .attr('selected', 'selected'));
 
@@ -392,10 +405,14 @@ App = {
 
             return;
         },
-
 };
 
-App.Map.init();
+//App.Map.init();
+window.App = App;
 
+})();
 
-}());
+$(document).ready(function() {
+    App.Map.init();
+});
+
