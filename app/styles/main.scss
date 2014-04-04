@@ -109,7 +109,6 @@ a:hover {
     text-transform: uppercase;
     z-index:3;
     }
-  a p {margin:0;}
   a:hover {color:white;}
   a#manual-map:hover {background:darken($grass,10%);}
   a#manual-map,
@@ -328,4 +327,13 @@ a:hover {
      bottom: 100px;
      right: 10px;
    }
+}
+
+.logo-p {
+    display: inline-block;
+    margin: 0 0 0 7px;
+}
+
+.logo-img {
+    width: 48px;
 }
