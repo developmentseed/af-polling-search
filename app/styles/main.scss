@@ -72,7 +72,7 @@ a:hover {
   position: absolute;
 	z-index:5;
 	background-color: white;
-  width:75%;
+  width:50%;
   left:15%;
   top:42px;
   border-radius: 3px;
@@ -289,6 +289,9 @@ a:hover {
     background: #f8f8f8;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+}
+#content .dari {
+    direction: rtl!important;
 }
 
 @media only screen and (max-width: 1000px) {

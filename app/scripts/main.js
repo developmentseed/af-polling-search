@@ -195,7 +195,7 @@ App = {
 				// 	'. You are: '+dist + ' km away.' );
 				var dari1 = "نزدیک ترین مرکز رای دهی در";
 				var dari2 = "کیلو متری قرار دارد";
-				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ,' + address.name + ' ' + dist + ' ' + dari2 + '.');
+				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ،' + address.name + ' ' + dist + ' ' + dari2 + '.');
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
