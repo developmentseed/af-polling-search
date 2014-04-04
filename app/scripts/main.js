@@ -20,18 +20,22 @@ App = {
 		init: function(){
 
 			var that = this;
-			// display map
-			var baseMap = 'afghan-open.311hsemi,afghan-open.0kmiy66r';
-			this.map = L.mapbox.map('map', baseMap,{
-    				tileLayer: {format: 'jpg80'}
-				}).setView([34.361370, 66.363099], 6);
-			this.layers = [];
-			this.view = 'home';
 
                         if ($('body').hasClass('en')) {
                             App.Map.siteLang = 'en';
                         }
 
+			// display map
+			var baseMap = App.Map.siteLang === 'dari' ?
+                            'afghan-open.311hsemi,afghan-open.0kmiy66r':
+                            'afghan-open.311hsemi,afghan-open.p1z41jor';
+
+
+			this.map = L.mapbox.map('map', baseMap,{
+    				tileLayer: {format: 'jpg80'}
+				}).setView([34.361370, 66.363099], 6);
+			this.layers = [];
+			this.view = 'home';
                         this.fillSelect();
 
 			function home() {
