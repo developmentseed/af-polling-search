@@ -25,9 +25,9 @@ App = {
 				}).setView([34.361370, 66.363099], 6);
 			this.layers = [];
 			this.view = 'home';
+                        this.fillSelect();
 
 			function home() {
-				// console.log(that.map);
 				$('#control').fadeIn(100);
 				$('#title').fadeIn(100);
 				//$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
@@ -60,7 +60,6 @@ App = {
 
 			// listen to control input
 			function manualMap() {
-			// $('#manual-map').on('click', function(){
 				clear();
 				$('#title').html('');
 				that.initUserLocationEntry();
@@ -82,13 +81,15 @@ App = {
 			function autoMap() {
 			// $('#auto-map').on('click', function(){
 				clear();
+				that.view = 'auto';
 				$('#title').html('');
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
 				$('#cross-hair').removeClass('hide');
+                                //$('.select-style').fadeOut(100);
 				that._addDrag();
-				that.view = 'auto';
 			};
+
 			function viewMap() {
 			// $('#view-map').on('click', function(){
 				$('#title').html('');
@@ -317,43 +318,81 @@ App = {
 		return minIndex;
 	},
 
-	initUserLocationEntry : function(){
+        districts: {
+            json: false,
+            url: 'data/districts-dari.json',
+            get: function(fn) {
+                var that = this,
+                    topojson = this.districts.json;
 
-		var that = this;
-		var distNames = {};
-		var districts = omnivore.topojson('data/districts-dari.json')
-		.on('ready', function() {
+                if (topojson) {
+                    return topojson;
+                }
 
-			for (var key in districts._layers) {
-				distNames[districts._layers[key].feature.properties.dari_dist] = districts._layers[key];
-			};
+                else {
+                    topojson = omnivore.topojson(this.districts.url).on('ready', function() {
+                        that.districts.json = topojson;
+                        if (fn) {
+                            fn(topojson);
+                        }
+                    });
+                }
+            }
+        },
 
-			var distOptions = $('#districts');
+        fillSelect: function() {
+            var get = $.proxy(this.districts.get, this),
+                that = this;
 
-			$.each(distNames, function(name) {
-				// console.log(name);
-				distOptions.append($('<option />').val(name).text(name));
-			});
-			distOptions.change(function() {
-				var district = $('select option:selected').val();
-				that.view = 'manual';
-				that.map.fitBounds(distNames[district]);
-				// that.map.on('moveend', function() {
-					// console.log('zoomed in')
-				setTimeout(function() {
-					App.home = {
-						lat: that.map.getCenter().lat,
-						lon: that.map.getCenter().lng,
-					};
-					that._renderHome(App.home);
-					that.getClosestPollingStation();
-					// that.map.off('moveend');
-				// });
-				}, 1000);
-			});
-		}).addTo(that.map);
-		this.layers.push(districts);
-	},
+            get(function(topojson) {
+
+                var distNames = {},
+                    distOptions = $('#districts');
+
+                for (var key in topojson._layers) {
+                    distNames[topojson._layers[key].feature.properties.dari_dist] = topojson._layers[key];
+                };
+
+                distOptions.append($('<option />')
+                                   .text('ولسوالی تان را انتخاب کنید')
+                                   .val('default')
+                                   .attr('selected', 'selected'));
+
+                $.each(distNames, function(name) {
+                    distOptions.append($('<option />').val(name).text(name));
+                });
+
+                distOptions.change(function() {
+                    var district = $('select option:selected').val();
+                    if (district === 'default') return;
+                    that.map.fitBounds(distNames[district]);
+                    setTimeout(function() {
+                        App.home = {
+                            lat: that.map.getCenter().lat,
+                            lon: that.map.getCenter().lng,
+                        };
+                        that._renderHome(App.home);
+                        that.getClosestPollingStation();
+                    }, 1000);
+
+                    window.location.hash = '/manual-map';
+                    manualMap();
+                });
+            });
+        },
+
+	initUserLocationEntry : function() {
+            var get = $.proxy(this.districts.get, this),
+                that = this;
+
+            get(function(topojson) {
+                topojson.addTo(that.map);
+                that.layers.push(topojson);
+            });
+
+            return;
+        },
+
 };
 
 App.Map.init();
