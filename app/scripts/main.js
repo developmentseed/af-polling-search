@@ -329,7 +329,7 @@ App = {
         districts: {
             json: false,
             urlDari: 'data/districts-dari.json',
-            urlEn: 'data/districts-en.json',
+            urlEn: '../data/districts-en.json',
             get: function(fn) {
 
                 var url = this.siteLang === 'dari' ? this.districts.urlDari : this.districts.urlEn,
