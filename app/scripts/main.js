@@ -41,7 +41,7 @@ App = {
 			}
 			function clear() {
 
-				that.map.off('moveend');
+				// that.map.off('moveend');
 				that.map.off('dragend');
 				that.layers.forEach(function (layer) {
 					that.map.removeLayer(layer);
@@ -61,6 +61,7 @@ App = {
 			// listen to control input
 			function manualMap() {
 			// $('#manual-map').on('click', function(){
+				clear();
 				$('#title').html('');
 				that.initUserLocationEntry();
 				$('#control').fadeOut(100);
@@ -72,8 +73,15 @@ App = {
 				that.view = 'manual';
 			};
 
+			$('#auto-map').on('click', function() {
+				if (that.view !== 'home') {
+					autoMap();
+				}
+			});
+
 			function autoMap() {
 			// $('#auto-map').on('click', function(){
+				clear();
 				$('#title').html('');
 				that.getUserGeoLocation();
 				$('#title').fadeOut(100);
@@ -328,17 +336,20 @@ App = {
 			});
 			distOptions.change(function() {
 				var district = $('select option:selected').val();
+				that.view = 'manual';
 				that.map.fitBounds(distNames[district]);
-				that.map.on('moveend', function() {
+				// that.map.on('moveend', function() {
 					// console.log('zoomed in')
+				setTimeout(function() {
 					App.home = {
 						lat: that.map.getCenter().lat,
 						lon: that.map.getCenter().lng,
 					};
 					that._renderHome(App.home);
 					that.getClosestPollingStation();
-				})
-
+					// that.map.off('moveend');
+				// });
+				}, 1000);
 			});
 		}).addTo(that.map);
 		this.layers.push(districts);

@@ -27,7 +27,7 @@ App = {
 			this.view = 'home';
 
 			function home() {
-				console.log(that.map);
+			//	console.log(that.map);
 				$('#control').fadeIn(100);
 				$('#title').fadeIn(100);
 				//$('#title').html('Afghanistan <br> Polling Stations <em>2014</em>')
@@ -41,7 +41,7 @@ App = {
 			}
 			function clear() {
 
-				that.map.off('moveend');
+			//	that.map.off('moveend');
 				that.map.off('dragend');
 				that.layers.forEach(function (layer) {
 					that.map.removeLayer(layer);
@@ -61,6 +61,7 @@ App = {
 			// listen to control input
 			function manualMap() {
 			// $('#manual-map').on('click', function(){
+				clear();
 				$('#title').html('');
 				that.initUserLocationEntry();
 				$('#control').fadeOut(100);
@@ -71,7 +72,11 @@ App = {
 				that._addDrag();
 				that.view = 'manual';
 			};
-
+			$('#auto-map').on('click', function() {
+				if (that.view !== 'home') {
+					autoMap();
+				}
+			});
 			function autoMap() {
 			// $('#auto-map').on('click', function(){
 				$('#title').html('');
@@ -259,7 +264,7 @@ App = {
 				arrData[ arrData.length - 1 ].push( strMatchedValue );
 			}
 			App.pollingStations= arrData;
-			console.log( arrData.length );
+			// console.log( arrData.length );
 			that.getNearestNeighbor();
 		}
 
@@ -326,16 +331,18 @@ App = {
 			distOptions.change(function() {
 				var district = $('select option:selected').val();
 				that.map.fitBounds(distNames[district]);
-				that.map.on('moveend', function() {
-					console.log('zoomed in')
+				// that.map.on('moveend', function() {
+					// console.log('zoomed in')
+				setTimeout(function() {
 					App.home = {
 						lat: that.map.getCenter().lat,
 						lon: that.map.getCenter().lng,
 					};
 					that._renderHome(App.home);
 					that.getClosestPollingStation();
-				})
-
+					// that.map.off('moveend');
+				// });
+				}, 1000);
 			});
 		}).addTo(that.map);
 		this.layers.push(districts);
