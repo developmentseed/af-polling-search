@@ -19,7 +19,7 @@ App = {
 
 			var that = this;
 			// display map
-			var baseMap = 'afghan-open.311hsemi,afghan-open.3hpmygb9';
+			var baseMap = 'afghan-open.311hsemi,afghan-open.p1z41jor';
 			this.map = L.mapbox.map('map', baseMap,{
     				tileLayer: {format: 'jpg80'}
 				}).setView([34.361370, 66.363099], 6);
@@ -93,7 +93,7 @@ App = {
 				// 		marker.setIcon(L.divIcon({className: 'div-icon'}));
 				// 	});
 				// }).addTo(that.map);
-				var locations = L.mapbox.tileLayer('afghan-open.3hpmygb9').addTo(that.map);
+				var locations = L.mapbox.tileLayer('afghan-open.p1z41jor').addTo(that.map);
 				// var gridLayer = L.mapbox.gridLayer('nate.x3ymbo6r').addTo(that.map);
 				// var myGridControl = L.mapbox.gridControl(gridLayer).addTo(that.map);
 				// console.log(gridLayer);
