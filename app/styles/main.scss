@@ -72,10 +72,11 @@ a:hover {
   position: absolute;
 	z-index:5;
 	background-color: white;
-  width:50%;
-  left:25%;
-  top:10px;
+  width:75%;
+  left:15%;
+  top:42px;
   border-radius: 3px;
+  font-size:1.2em;
   }
 
 #cross-hair {
@@ -212,7 +213,7 @@ a:hover {
 }
 
 .leaflet-control-grid.map-tooltip {
-    left:77px;
+    left:45px;
     max-width:450px;
     padding: 5px;
 }
