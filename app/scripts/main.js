@@ -283,9 +283,12 @@ App = {
 			that.getNearestNeighbor();
 		}
 
+                var csv_url = this.siteLang === 'dari' ?
+                    'data/data_dr.csv' :
+                    '../data/data_en.csv';
 		$.ajax({
 			type: "GET",
-			url: "data/data_dr.csv",
+			url: csv_url,
 			dataType: "text",
 			success: function(data) {processData(data);}
 		});
