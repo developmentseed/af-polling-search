@@ -172,7 +172,7 @@ App = {
 				var locationIcon = L.divIcon({
                         className: "current-location",
 						iconSize: [20, 20],
-						iconAnchor: [8,12]
+						iconAnchor: [8,5]
                 });
 				this.homeMarker = L.marker([point.lat, point.lon], {icon:locationIcon}).addTo(this.map);
 			} else {
@@ -216,9 +216,15 @@ App = {
 
 				// $('#narrative').html('The closest polling station is here, at: '+address.name + ' , ' +address.location +
 				// 	'. You are: '+dist + ' km away.' );
-				var dari1 = "نزدیک ترین مرکز رای دهی در";
-				var dari2 = "کیلو متری قرار دارد";
-				$('#narrative').html(' ' + dari1 + ' '+ address.location + ' ،' + address.name + ' ' + dist + ' ' + dari2 + '.');
+
+				if (App.Map.siteLang === 'dari') {
+							var dari1 = "کیلو متری قرار دارد";
+							var dari2 = "نزدیک ترین مرکز رای دهی در";
+							var dari3 = "است و در";
+							$('#narrative').html(' ' + dari1 + ' ' + dist + ' ' + dari2 +   ' '+ address.location + ' ،' + address.name + ' ' + dari3 + '.');
+				} else {
+						$('#narrative').html('The closest polling station is at: <em>'+address.name + ' , ' +address.location + '</em>, '+dist + ' km away.' );
+				}
 
 			return new L.featureGroup([L.marker([App.home.lat,App.home.lon]), L.marker([point.lat,point.lon])]);
 
