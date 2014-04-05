@@ -21,7 +21,7 @@
     </head>
     <body class="en">
         <div id='map'>
-            <div id='cross-hair'>
+            <div id='cross-hair' class="hide">
                 <i id='cross-hair' class="fa fa-crosshairs"></i>
             </div>
         </div>
@@ -34,13 +34,19 @@
                 </a>
             </div>
             <a class='select-style'><select id="districts">Enter location</select></a>
-            <a href="/" class="control"><img class="logo-img" src="../images/logo-lg.png"><p class="logo-p">Votehere.af</p></a>
+            <a href="/en/" class="control"><img class="logo-img" src="../images/logo-lg.png"><p class="logo-p">Votehere.af</p></a>
         </div>
         <a href='../' class='language control-light'>دری</a>
 
         <a href="#/auto-map" id='auto-map' class='autolocate dari control-light'>
             <i class="fa fa-location-arrow"></i>
         </a>
+        <div id="callout" class="locate-callout control-light">
+            <div class='locate-callout-text'>
+                Find your location
+            </div>
+            <div class='arrow'></div>
+        </div>
 
         <!-- footnote link -->
         <div class='about-link'>
