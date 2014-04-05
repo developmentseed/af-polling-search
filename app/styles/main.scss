@@ -145,6 +145,19 @@ a:hover {
 .autolocate > i {
     padding-top: 5px;
 }
+.locate-callout.control-light {
+    left: 49px;
+    width: 140px;
+}
+.locate-callout .arrow {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right:10px solid #64b66a;
+    margin-left: -12px;
+    margin-top: -18px;
+}
 
 #control {.logo {margin-right:5px;}}
 
