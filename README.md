@@ -1,8 +1,6 @@
 Polling Station Search for Afghanistan
 ===========
 
-**NB: DO NOT USE! This has not been updated to reflect the polling centers that the IEC has closed.**
-
 Install dependencies: `npm install && bower install`
 
 Test Server: `grunt server`
