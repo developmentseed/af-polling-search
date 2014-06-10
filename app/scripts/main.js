@@ -218,10 +218,10 @@ App = {
 				// 	'. You are: '+dist + ' km away.' );
 
 				if (App.Map.siteLang === 'dari') {
-							var dari1 = "کیلو متری قرار دارد";
-							var dari2 = "نزدیک ترین مرکز رای دهی در";
-							var dari3 = "است و در";
-							$('#narrative').html(' ' + dari1 + ' ' + dist + ' ' + dari2 +   ' '+ address.location + ' ،' + address.name + ' ' + dari3 + '.');
+							var dari1 = "نزدیک ترین مرکز رای دهی در";
+							var dari2 = "در";
+							var dari3 = "کیلو متری قرار دارد";
+							$('#narrative').html(dari1 + ' ' + address.name + '، ' + address.location + '، ' + dari2 + ' ' + dist + ' ' + dari3);
 				} else {
 						$('#narrative').html('The closest polling station is at: <em>'+address.name + ' , ' +address.location + '</em>, '+dist + ' km away.' );
 				}
