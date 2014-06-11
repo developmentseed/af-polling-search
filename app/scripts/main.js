@@ -27,8 +27,8 @@ App = {
 
 			// display map
 			var baseMap = App.Map.siteLang === 'dari' ?
-                            'afghan-open.311hsemi,afghan-open.0kmiy66r':
-                            'afghan-open.311hsemi,afghan-open.p1z41jor';
+                            'afghan-open.311hsemi,afghan-open.polling-centers-dr':
+                            'afghan-open.311hsemi,afghan-open.polling-centers-en';
 
 
 			this.map = L.mapbox.map('map', baseMap,{
@@ -369,7 +369,7 @@ App = {
         fillSelect: function() {
             var get = $.proxy(this.districts.get, this),
                 that = this,
-                default_text = this.siteLang === 'dari' ? 'ولسوالی تان را انتخاب کنید' : 'Choose your district',
+				default_text = this.siteLang === 'dari' ? 'انتخاب ولسوالید' : 'Choose your district',
                 prop = this.siteLang === 'dari' ? 'dari_dist' : 'dist_name';
 
             get(function(topojson) {
