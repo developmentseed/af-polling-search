@@ -369,7 +369,7 @@ App = {
         fillSelect: function() {
             var get = $.proxy(this.districts.get, this),
                 that = this,
-				default_text = this.siteLang === 'dari' ? 'انتخاب ولسوالید' : 'Choose your district',
+				default_text = this.siteLang === 'dari' ? 'انتخاب ولسوالی' : 'Choose your district',
                 prop = this.siteLang === 'dari' ? 'dari_dist' : 'dist_name';
 
             get(function(topojson) {
