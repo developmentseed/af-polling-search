@@ -205,7 +205,7 @@ a:hover {
 
 .mapbox-control-info {
   bottom: 108px;
-  right:100px;
+  right:215px;
   }
 
 .about-link {
@@ -226,6 +226,9 @@ a:hover {
 .about-link.dari {
     right:45px;
     font-size:15px!important;
+}
+.about-link .report {
+    margin-right:10px;
 }
 
 /* Leaflet items */
@@ -319,8 +322,8 @@ a:hover {
      width: auto;
    }
    .mapbox-control-info {
-     bottom: 85px;
-     right:90px;
+     bottom: 88px;
+     right:205px;
      }
 
    .about-link {
