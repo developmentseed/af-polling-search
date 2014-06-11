@@ -21,12 +21,15 @@ body {
 }
 
 .mapbox-control-info {
-  bottom: 65px;
-  right:90px;
+  bottom: 90px;
+  right:0px;
   }
 
 .about-link {
   position: absolute;
   bottom: 80px;
+  right: 10px;
+}
+.about-link.dari {
   right: 10px;
 }
