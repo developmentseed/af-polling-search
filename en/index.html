@@ -8,6 +8,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>VoteHere.af - Find Your Nearest Polling Center</title>
         <meta name="description" content="Use VoteHere.af to find your nearest polling center.">
+        <meta name="twitter:card" value="summary">
+        <meta property="og:title" content="VoteHere.af - Find Your Nearest Polling Center" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="http://www.votehere.af/" />
+        <meta property="og:image" content="http://www.votehere.af/images/votehere-af.png" />
+        <meta property="og:description" content="Use VoteHere.af to find your nearest polling center." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="../styles/main.css">
@@ -60,10 +66,24 @@
 
         <div id='narrative'></div>
 
+        <!-- facebook share -->
+        <div class="fb-share-button" data-href="http://www.votehere.af/" data-type="link" style="position:absolute;right:10px;z-index:1000"></div>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
+
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <!-- google analytics -->
         <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
