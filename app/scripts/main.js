@@ -27,8 +27,8 @@ App = {
 
 			// display map
 			var baseMap = App.Map.siteLang === 'dari' ?
-                            'afghan-open.311hsemi,afghan-open.polling-centers-dr':
-                            'afghan-open.311hsemi,afghan-open.polling-centers-en';
+                            'afghan-open.o45nfj4l,afghan-open.polling-centers-dr':
+                            'afghan-open.o45nfj4l,afghan-open.polling-centers-en';
 
 
 			this.map = L.mapbox.map('map', baseMap,{
